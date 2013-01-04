@@ -1,0 +1,9 @@
+<h1><%= @article.title %></h1>
+
+<% if notice %>
+	<p><%= notice %></p>
+<% end %>
+
+<p><%= @article.body %></p>
+</br>
+<p><%= link_to "Back to article's list", articles_path %></p>
