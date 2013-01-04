@@ -1,9 +1,11 @@
 <h1><%= @article.title %></h1>
 
-<% if notice %>
-	<p><%= notice %></p>
-<% end %>
-
 <p><%= @article.body %></p>
 </br>
-<p><%= link_to "Back to article's list", articles_path %></p>
+
+<%= button_to "Back", { action: "index" 	} , method: :get %>
+<%= button_to "Edit", { :action => "edit", :id => @article.id }, method: :get %>
+<%= button_to "Delete", { :action => "destroy", :id => @article.id },
+      												:confirm => "Are you sure?", method: :delete %>
+
+

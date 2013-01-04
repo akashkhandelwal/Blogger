@@ -19,4 +19,22 @@ class ArticlesController < ApplicationController
 			redirect_to article_path(@article), notice: "Article successfully created...!!!!"
 		end
 	end
+
+	def edit
+		@article = Article.find(params[:id])
+	end
+
+	def destroy
+		@article = Article.find(params[:id])
+		@article.destroy
+		redirect_to articles_path, notice: "Article successfully destroyed...!!!"
+	end
+
+	def update
+		@article = Article.find(params[:id])
+		if @article.update_attributes(params[:article])
+			flash.notice = "Article, '#{@article.title}' has been	 successfully updated...!!!"
+			redirect_to article_path(@article)
+		end
+	end
 end
