@@ -1,0 +1,14 @@
+<h1>Tags</h1>
+
+<table>
+	<% @tags.each do |tag| %>
+	<tr class = "tag_row">
+		<td>
+			<%= link_to tag, tag_path(tag) %>
+		</td>
+		<td ><%= link_to "Delete", { :action => "destroy", :id => tag.id },
+    												:confirm => "Are you sure?", method: :delete, class: "delete_tag" %></td>
+	</tr>
+	<% end %>
+</table>
+

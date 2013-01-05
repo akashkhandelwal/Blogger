@@ -1,11 +1,24 @@
 <h1><%= @article.title %></h1>
 
+<p>Tags: <%= tag_links(@article.tags) %></p>
+<br />
+
 <p><%= @article.body %></p>
+<br />
+
+<div class = "button">
+	<%= link_to "Articles", { action: "index" 	} , method: :get %>
+<%= link_to "Edit", { :action => "edit", :id => @article.id }, method: :get %>
+<%= link_to "Delete", { :action => "destroy", :id => @article.id },
+    												:confirm => "Are you sure?", method: :delete %>
+</div>
+
+<hr>
+
+
 </br>
 
-<%= button_to "Back", { action: "index" 	} , method: :get %>
-<%= button_to "Edit", { :action => "edit", :id => @article.id }, method: :get %>
-<%= button_to "Delete", { :action => "destroy", :id => @article.id },
-      												:confirm => "Are you sure?", method: :delete %>
+<h3>Comments (<%= @article.comments.count %>)</h3>
+<%= render "comment" %>
 
-
+<%= render 'comments/form' %>
