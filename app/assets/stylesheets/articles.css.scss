@@ -297,8 +297,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 .top-button,a.new_article,.article_actions a[href$='edit'],.article_actions a[data-method='delete'] {
 	position:absolute;
-	top:26px;
-	right:20px;
+	top: 105px;
+	right: 30px;
 	display:inline-block;
 	padding:4px 11px;
 	font-size:.9em;
@@ -458,7 +458,7 @@ p.tag_list {
 #sidebar ul a {
 	color:#6c7c9a;
 }
-.input,form input[type=text],form input[type=password],form textarea {
+.input,form input[type=text],form textarea {
 	width:100%;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
@@ -533,6 +533,7 @@ input[type=submit] {
 	-khtml-background-clip:padding-box;
 	background-clip:padding-box;
 	font-size:1.2em;
+	margin: 5px 0;
 }
 input[type=submit],input[type=submit]:visited {
 	color:#fff;
@@ -588,5 +589,27 @@ div.field_with_errors input{border: 3px solid red}
 	margin: 5px;
 }
 .tag_row td{
-	padding: 0 5px 6px 5px;
+	padding: 0 5px 0 0;
+}
+nav {
+	padding: 10px 0 0 5px;
+	margin-bottom: 20px;
+	border: 10px solid #6C7C9A;
+	border-radius: 5px;
+	height: 30px;
+	width: 105%;
+	background-color: #223447;
+	position: relative;
+	top: -10px;
+	left: -40px;
+	ul li {
+		display: inline;
+		margin-right: 5px;
+		a{
+			color: white;
+		}
+		a:hover {
+			color: #42678D;
+		}
+	}
 }

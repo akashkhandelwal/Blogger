@@ -1,5 +1,7 @@
 Blogger::Application.routes.draw do
 
+  devise_for :authors
+
   get "tags/index"
 
   get "tags/show"

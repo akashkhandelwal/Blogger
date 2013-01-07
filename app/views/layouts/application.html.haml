@@ -1,11 +1,26 @@
 !!!
 %html
-  %head
-    %title Blogger
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body
-    %p.flash
-      = flash.notice
-    = yield
+	%head
+		%title Blogger
+		= stylesheet_link_tag    "application"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+	
+	%body
+		%nav
+			%ul
+				%li 
+					= link_to "Articles", articles_path
+				%li 
+					= link_to "Tags", tags_path
+				- if author_signed_in?
+					%li
+						= link_to "Log out", destroy_author_session_path, method: :delete
+				- else
+					%li
+						= link_to "Sign In", new_author_session_path
+					%li 
+						= link_to "Sign Up", new_author_registration_path 
+		%p.flash
+			= flash.notice
+		= yield
