@@ -588,8 +588,10 @@ div.field_with_errors input{border: 3px solid red}
 	border-radius: 5px;
 	margin: 0;	
 }
-.tag_row td{
-	padding: 0 5px 0 0;
+.tag_row {
+	padding: 5px;	
+	margin-bottom: 20px;
+	height: 40px;
 }
 nav {
 	padding: 10px 0 0 5px;

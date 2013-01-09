@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+	before_filter :authenticate_author!, except: [:index, :show]
+
 	def index
 		@articles = Article.all
 	end
@@ -41,7 +43,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def add_article_to_author
-		#debugger
 		@article = Article.find(params[:id])
 		@article.author_id = current_author.id
 		if @article.save
