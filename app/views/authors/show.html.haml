@@ -1,0 +1,18 @@
+%h1
+	= current_author.name
+%div.author_articles
+	%h2
+		Articles
+		%ul 
+		- current_author.articles.each do |article|
+			%li
+				= link_to article.title, article_path(article)
+%div.author_tags
+	%h2
+		Tags
+		%ul 
+		- current_author.tags.each do |tag|
+			%li
+				= link_to tag.name, tag_path(tag)
+
+

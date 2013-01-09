@@ -1,14 +1,16 @@
 <h1>Listing all articles</h1>
 <div class = "article_list">
-	<ul>
-	<% @articles.each do |article| %>
-		<li>
-			<h3 class = "article_name"><%= link_to article.title, article_path(article), class: 'article_title',id: "article_#{article.id}" %></h3>
-		<div style = "margin-bottom: 10px;"><%= tag_links(article.tags) %></div>
-		
-		</li>
-	<% end %>
-</ul>
+	<table>
+		<% @articles.each do |article| %>
+			<tr>
+				<td style="padding: 5px"><h3 class = "article_name"><%= link_to article.title, article_path(article), class: 'article_title',id: "article_#{article.id}" %></h3>
+				<div style = "margin-bottom: 10px;"><%= tag_links(article.tags) %></div></td>
+				<% if author_signed_in? && article.author_id != current_author.id %>
+					<td><%= button_to "Add", { action: "add_article_to_author", id: article.id }, method: :put %></td>
+				<% end %>
+			</tr>
+		<% end %>
+	</table>
 </div>
 
 <%= link_to "Create new aricle", new_article_path, class: 'new_article' %>

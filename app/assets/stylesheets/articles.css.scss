@@ -581,12 +581,12 @@ div.field_with_errors input{border: 3px solid red}
 .article_list {
 	padding: 10px;
 }
-.delete_tag {
+.add_tag p {
 	background-color: #6C7C9A;
 	color: #FFFFFF;
-	padding: 1px 5px 2px 5px;
+	padding: 1px 10px 2px 10px;
 	border-radius: 5px;
-	margin: 5px;
+	margin: 0;	
 }
 .tag_row td{
 	padding: 0 5px 0 0;

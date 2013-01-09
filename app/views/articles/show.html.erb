@@ -9,13 +9,14 @@
 
 <p><%= @article.body %></p>
 <br />
-
-<div class = "button">
-	<%= link_to "Articles", { action: "index" 	} , method: :get %>
-<%= link_to "Edit", { :action => "edit", :id => @article.id }, method: :get %>
-<%= link_to "Delete", { :action => "destroy", :id => @article.id },
-    												:confirm => "Are you sure?", method: :delete %>
-</div>
+<% if author_signed_in? %>
+	<div class = "button">
+		<%= link_to "Articles", { action: "index" 	} , method: :get %>
+	<%= link_to "Edit", { :action => "edit", :id => @article.id }, method: :get %>
+	<%= link_to "Delete", { :action => "destroy", :id => @article.id },
+	    												:confirm => "Are you sure?", method: :delete %>
+	</div>
+<% end %>
 
 <hr>
 

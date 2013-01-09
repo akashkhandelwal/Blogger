@@ -3,12 +3,18 @@
 <table>
 	<% @tags.each do |tag| %>
 	<tr class = "tag_row">
-		<td>
+		<td style="font-size: 20px;">
 			<%= link_to tag, tag_path(tag) %>
 		</td>
-		<td ><%= link_to "Delete", { :action => "destroy", :id => tag.id },
-    												:confirm => "Are you sure?", method: :delete, class: "delete_tag" %></td>
+    <% if author_signed_in? && tag.author_id != current_author.id %>
+			<td><%= button_to "Add", { action: "add_tag_to_author", id: tag.id },
+																method: :put %></td>
+		<% else %>													
+			<td class="add_tag"><p>Added</p></td>
+		<% end %>
+		<% if author_signed_in? %>
+			<td ><%= button_to "Delete", { :action => "destroy", :id => tag.id }, :confirm => "Are you sure?",													method: :delete %></td>
+		<% end %>
 	</tr>
 	<% end %>
 </table>
-

@@ -1,16 +1,35 @@
 Blogger::Application.routes.draw do
 
+  get "authors/show"
+
+  get "authors/index"
+
+  get "authors/create"
+
+  get "authors/destroy"
+
+  get "authors/edit"
+
   devise_for :authors
 
   get "tags/index"
 
   get "tags/show"
 
-  resources :articles
+  resources :articles do
+    member do
+      put 'add_article_to_author'
+    end
+  end 
 
   resources :comments
 
-  resources :tags
+  resources :tags do
+    member do
+      put 'add_tag_to_author'
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

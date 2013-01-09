@@ -39,4 +39,13 @@ class ArticlesController < ApplicationController
 			redirect_to article_path(@article)
 		end
 	end
+
+	def add_article_to_author
+		#debugger
+		@article = Article.find(params[:id])
+		@article.author_id = current_author.id
+		if @article.save
+			redirect_to articles_path
+		end
+	end
 end

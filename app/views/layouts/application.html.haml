@@ -14,8 +14,13 @@
 				%li 
 					= link_to "Tags", tags_path
 				- if author_signed_in?
-					%li
+					%li.logged_in
+						= "Logged in as #{current_author.name} | "
 						= link_to "Log out", destroy_author_session_path, method: :delete
+					%li
+						= link_to "Authors", authors_index_path
+					%li
+						= link_to "Profile", authors_show_path(@author)
 				- else
 					%li
 						= link_to "Sign In", new_author_session_path

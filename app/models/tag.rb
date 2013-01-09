@@ -4,6 +4,8 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :articles, through: :taggings
 
+  belongs_to :authors
+
   def to_s
   	name
   end

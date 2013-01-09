@@ -12,4 +12,12 @@ class TagsController < ApplicationController
   	@tag.destroy
   	redirect_to tags_path, notice: "Tag successfully deleted...!!!"
   end
+
+  def add_tag_to_author
+    @tag = Tag.find(params[:id])
+    @tag.author_id = current_author.id
+    if @tag.save
+      redirect_to tags_path
+    end
+  end
 end

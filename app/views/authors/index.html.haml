@@ -1,0 +1,9 @@
+%h1 Authors
+
+%ul
+	- @authors.each do |author|
+		%li
+			%h2 
+				= link_to author.name, authors_show_path
+
+	

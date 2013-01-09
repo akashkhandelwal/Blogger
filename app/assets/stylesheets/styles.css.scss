@@ -35,7 +35,7 @@ a {
   padding-top: 20px;
 }
 
-#author_email, #password_field {
+#author_email, #password_field, #name_field {
   -moz-box-sizing: border-box;
     background-color: #F5F5F5;
     border: 1px solid #CCCCCC;
@@ -44,4 +44,33 @@ a {
     font-size: 1.3em;
     padding: 0.3em 0.4em;
     margin-bottom: 15px;
+    width: 40%;
+}
+.logged_in {
+  float: right;
+  color: white;
+}
+.author_table {
+  tr {
+    th {
+      border-bottom: 1px solid;
+      font-size: 22px;
+      h2 {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+.table_data{
+  font-size: 18px;
+  padding: 10px;
+}
+.author_articles {
+  width: 30%;
+  float: left;
+  padding-left: 10px
+}
+.author_tags {
+  width: 60%;
 }
