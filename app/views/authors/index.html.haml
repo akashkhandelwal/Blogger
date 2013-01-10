@@ -1,9 +1,14 @@
 %h1 Authors
 
-%ul
+%table
 	- @authors.each do |author|
-		%li
-			%h2 
-				= link_to author.name, authors_show_path
+		%tr
+			%td
+				%h2
+					= link_to author.name, authors_show_path
+			- if current_author.admin? && author != current_author
+				%td
+					=button_to "Delete", authors_destroy_path(author), method: :delete
+
 
 	

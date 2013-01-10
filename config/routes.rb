@@ -6,7 +6,7 @@ Blogger::Application.routes.draw do
 
   get "authors/create"
 
-  get "authors/destroy"
+  delete "authors/destroy"
 
   get "authors/edit"
 
