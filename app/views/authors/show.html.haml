@@ -1,18 +1,24 @@
 %h1
-	= current_author.name
-%div.author_articles
-	%h2
-		Articles
-		%ul 
-		- current_author.articles.each do |article|
-			%li
-				= link_to article.title, article_path(article)
-%div.author_tags
-	%h2
-		Tags
-		%ul 
-		- current_author.tags.each do |tag|
-			%li
-				= link_to tag.name, tag_path(tag)
+	= @author.name
+- if @author == current_author
+	%div{:style => "width: 100%; padding: 5px; margin-bottom: 10px;"}
+		= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Sure"
+
+%div
+	%div.author_articles
+		%h2
+			Articles
+			%ul 
+			- @author.articles.each do |article|
+				%li
+					= link_to article.title, article_path(article)
+	
+	%div.author_tags
+		%h2
+			Tags
+			%ul 
+			- @author.tags.each do |tag|
+				%li
+					= link_to tag.name, tag_path(tag)
 
 

@@ -1,16 +1,8 @@
 Blogger::Application.routes.draw do
 
-  get "authors/show"
-
-  get "authors/index"
-
-  get "authors/create"
-
-  delete "authors/destroy"
-
-  get "authors/edit"
-
   devise_for :authors
+
+  resources :authors
 
   get "tags/index"
 

@@ -20,9 +20,9 @@
 							= "(admin) | "
 						= link_to "Log out", destroy_author_session_path, method: :delete
 					%li
-						= link_to "Authors", authors_index_path
+						= link_to "Authors", authors_path
 					%li
-						= link_to "Profile", authors_show_path(@author)
+						= link_to "Profile", author_path(current_author)
 				- else
 					%li
 						= link_to "Sign In", new_author_session_path

@@ -6,6 +6,11 @@ class Article < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
+  has_many :authors, through: :article_stores, dependent: :nullify
+  has_many :article_stores
+
+  belongs_to :author
+
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
 
   def tag_list
@@ -24,5 +29,9 @@ class Article < ActiveRecord::Base
 			tagging = self.taggings.new
 			tagging.tag_id = tag.id
 		end
+	end
+
+	def create_new_article_store
+		self.article_stores.build
 	end
 end

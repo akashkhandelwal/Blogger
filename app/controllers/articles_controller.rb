@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(params[:article])
+		@article.author_id = current_author.id
 		@article.save
 		if @article.save
 			redirect_to article_path(@article), notice: "Article successfully created...!!!!"
@@ -44,7 +45,8 @@ class ArticlesController < ApplicationController
 
 	def add_article_to_author
 		@article = Article.find(params[:id])
-		@article.author_id = current_author.id
+		store = @article.create_new_article_store
+		store.author_id = current_author.id
 		if @article.save
 			redirect_to articles_path
 		end
