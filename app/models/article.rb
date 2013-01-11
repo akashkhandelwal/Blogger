@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
-  has_many :authors, through: :article_stores, dependent: :nullify
+  has_many :authors, through: :article_stores
   has_many :article_stores
 
   belongs_to :author

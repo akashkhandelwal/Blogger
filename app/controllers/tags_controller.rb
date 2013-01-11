@@ -15,7 +15,8 @@ class TagsController < ApplicationController
 
   def add_tag_to_author
     @tag = Tag.find(params[:id])
-    @tag.author_id = current_author.id
+    store = @tag.create_new_tag_store
+    store.author_id = current_author.id
     if @tag.save
       redirect_to tags_path
     end

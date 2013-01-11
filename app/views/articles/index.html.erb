@@ -4,21 +4,23 @@
 		<% @articles.each do |article| %>
 			<tr class = "article_row">
 				<td style="padding: 5px"><h3 class = "article_name"><%= link_to article.title, article_path(article), class: 'article_title',id: "article_#{article.id}" %></h3>
-				
-				<div style = "margin-bottom: 10px;"><%= tag_links(article.tags) %></div></td>
-				<% if author_signed_in? %>	
-					
-					<% unless article.authors.include?(current_author) %>
-						<td><%= button_to "Add", { action: "add_article_to_author", id: article.id }, method: :put %></td
-					
-					<% else %>
-						<td class="add_tag"><p>Added</p></td>
+					<div style = "margin-bottom: 10px;"><%= tag_links(article.tags) %></div></td>
+				<% if author_signed_in? %>
+					<td>	
+						<% unless article.authors.include?(current_author) %>
+							<%= button_to "Add", { action: "add_article_to_author", id: article.id }, method: :put %>
+						<% else %>
+							<% if article.author_id == current_author.id %>
+								<p class="add_tag">PERSONAL</p>
+							<% else %>
+								<p class="add_tag">Added</p>
+							<% end %>
+						<% end %>
+					</td>
+					<% if current_author.admin? %>
+							<td ><%= button_to "Delete", { :action => "destroy", :id => article.id },
+																				 :confirm => "Are you sure?", method: :delete %></td>
 					<% end %>
-				<% end %>
-
-				<% if author_signed_in? && current_author.admin? %>
-						<td ><%= button_to "Delete", { :action => "destroy", :id => article.id },
-																					 :confirm => "Are you sure?", method: :delete %></td>
 				<% end %>
 			</tr>
 		<% end %>

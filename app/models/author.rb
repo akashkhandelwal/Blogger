@@ -8,8 +8,9 @@ class Author < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
-  has_many :articles, through: :article_stores, dependent: :nullify
+  has_many :articles, through: :article_stores
 	has_many :article_stores
   
-  has_many :tags, dependent: :nullify
+  has_many :tags, through: :tag_stores
+  has_many :tag_stores
 end

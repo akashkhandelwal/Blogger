@@ -1,6 +1,6 @@
 %h1
 	= @author.name
-- if @author == current_author
+- unless current_author.admin?
 	%div{:style => "width: 100%; padding: 5px; margin-bottom: 10px;"}
 		= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Sure"
 

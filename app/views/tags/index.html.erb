@@ -7,13 +7,13 @@
 			<%= link_to tag, tag_path(tag) %>
 		</td>
     <% if author_signed_in? %>
-    	<% if tag.author_id != current_author.id %>
+    	<% unless tag.authors.include?(current_author) %>
 			<td><%= button_to "Add", { action: "add_tag_to_author", id: tag.id },
 																method: :put %></td>
-		<% else %>													
-			<td class="add_tag"><p>Added</p></td>
+			<% else %>													
+				<td><p class="add_tag">Added</p></td>
+			<% end %>
 		<% end %>
-	<% end %>
 		<% if author_signed_in? &&  current_author.admin? %>
 			<td ><%= button_to "Delete", { :action => "destroy", :id => tag.id }, :confirm => "Are you sure?",													method: :delete %></td>
 		<% end %>
