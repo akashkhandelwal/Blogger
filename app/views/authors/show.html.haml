@@ -1,24 +1,27 @@
 %h1
 	= @author.name
+
 - unless current_author.admin?
-	%div{:style => "width: 100%; padding: 5px; margin-bottom: 10px;"}
-		= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Sure"
+	= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Are you sure ?"
 
-%div
-	%div.author_articles
-		%h2
-			Articles
-			%ul 
-			- @author.articles.each do |article|
-				%li
+%table{style: "float: left; margin-right: 100px;" }
+	%thead
+		%tr
+			%th
+				%h2 Articles
+	%tbody
+		- @author.articles.each do |article|
+			%tr
+				%td
 					= link_to article.title, article_path(article)
-	
-	%div.author_tags
-		%h2
-			Tags
-			%ul 
-			- @author.tags.each do |tag|
-				%li
+					= link_to "Remove", {  action: "remove_article_from_author", id: article.id }, method: :delete 
+%%table
+	%thead
+		%tr
+			%th
+				%h2 Tags
+	%tbody
+		- @author.tags.each do |tag|
+			%tr
+				%td
 					= link_to tag.name, tag_path(tag)
-
-

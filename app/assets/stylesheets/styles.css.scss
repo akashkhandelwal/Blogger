@@ -47,7 +47,7 @@ a {
     width: 40%;
 }
 .logged_in {
-  float: right;
+  float: left;
   color: white;
 }
 .author_table {
@@ -66,12 +66,16 @@ a {
   font-size: 18px;
   padding: 10px;
 }
-.author_articles {
+.author_articles tr{
   width: 30%;
   float: left;
-  padding-left: 10px
+  padding-left: 10px;
+  //margin-top: 16px;
 }
 .author_tags {
   width: 65%;
   float: right;
+}
+.features {
+  margin-left: 50px;
 }

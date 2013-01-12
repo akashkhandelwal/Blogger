@@ -1,8 +1,16 @@
 Blogger::Application.routes.draw do
 
+  get "static_pages/index"
+
+  root to: 'static_pages#index'
+
   devise_for :authors
 
-  resources :authors
+  resources :authors do
+    member do
+      delete 'remove_article_from_author'
+    end
+  end
 
   get "tags/index"
 
@@ -71,7 +79,7 @@ Blogger::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root to: 'articles#index'
+  
 
   # See how all your routes lay out with "rake routes"
 

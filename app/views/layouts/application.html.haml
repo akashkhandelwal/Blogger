@@ -9,20 +9,23 @@
 	%body
 		%nav
 			%ul
+				%li
+					= link_to "Home", root_path
 				%li 
 					= link_to "Articles", articles_path
 				%li 
 					= link_to "Tags", tags_path
 				- if author_signed_in?
-					%li.logged_in
-						= "Logged in as #{current_author.name} | "
-						-if current_author.admin?
-							= "(admin) | "
-						= link_to "Log out", destroy_author_session_path, method: :delete
 					%li
 						= link_to "Authors", authors_path
 					%li
 						= link_to "Profile", author_path(current_author)
+					%li		
+						= link_to "Log out", destroy_author_session_path, method: :delete
+					%li.author_name
+						= "Logged in as #{current_author.name} "
+						-if current_author.admin?
+							= "(admin)"
 				- else
 					%li
 						= link_to "Sign In", new_author_session_path
