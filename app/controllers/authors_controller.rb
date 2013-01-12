@@ -23,4 +23,9 @@ class AuthorsController < ApplicationController
     ArticleStore.find_by_author_id_and_article_id(current_author.id, params[:id]).destroy
     redirect_to author_path(current_author)
   end
+
+  def remove_tag_from_author
+    TagStore.find_by_author_id_and_tag_id(current_author.id, params[:id]).destroy
+    redirect_to author_path(current_author)
+  end
 end

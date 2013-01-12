@@ -4,7 +4,7 @@
 - unless current_author.admin?
 	= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Are you sure ?"
 
-%table{style: "float: left; margin-right: 100px;" }
+%table.author_article_list
 	%thead
 		%tr
 			%th
@@ -14,8 +14,8 @@
 			%tr
 				%td
 					= link_to article.title, article_path(article)
-					= link_to "Remove", {  action: "remove_article_from_author", id: article.id }, method: :delete 
-%%table
+					= link_to "Remove", {  action: "remove_article_from_author", id: article.id }, method: :delete , style: "float:right; border-radius: 5px; background-color: #6C7C9A; margin-bottom: 2px; color: white; padding: 5px;"
+%table.author_tag_list
 	%thead
 		%tr
 			%th
@@ -25,3 +25,4 @@
 			%tr
 				%td
 					= link_to tag.name, tag_path(tag)
+					= link_to "Remove", {  action: "remove_tag_from_author", id: tag.id }, method: :delete , style: "float:right; border-radius: 5px; background-color: #6C7C9A; margin-bottom: 2px; color: white; padding: 5px;"

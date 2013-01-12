@@ -9,6 +9,7 @@ Blogger::Application.routes.draw do
   resources :authors do
     member do
       delete 'remove_article_from_author'
+      delete 'remove_tag_from_author'
     end
   end
 
