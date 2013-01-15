@@ -3,3 +3,6 @@ production:
   database: blogger_database
   pool: 5
   timeout: 5000
+development:
+  adapter: sqlite3
+  database: db/blogger.sqlite.db

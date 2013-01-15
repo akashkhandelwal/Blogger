@@ -1,7 +1,7 @@
 %h1
 	= @author.name
 
-- unless current_author.admin?
+- unless current_author.admin? || @author != current_author
 	= link_to "Delete Account", author_path(@author), method: :delete, style: "float: right", confirm: "Are you sure ?"
 
 %table.author_article_list
